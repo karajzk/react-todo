@@ -1,11 +1,18 @@
-const React = require("react");
-const TodoList = require("TodoList");
+import React, {Component} from "react";
+import TodoList from "TodoList";
 import AddTodo from "AddTodo";
-const TodoSearch = require("TodoSearch");
+import TodoSearch from "TodoSearch";
 
-const TodoApp = React.createClass({
-  getInitialState: function() {
-    return {
+class TodoApp extends Component {
+  constructor(props) {
+    super(props);
+    this.handleAddTodo = this
+      .handleAddTodo
+      .bind(this);
+    this.handleSearch = this
+      .handleSearch
+      .bind(this);
+    this.state = {
       showCompleted: false,
       searchText: "",
       todos: [
@@ -24,26 +31,29 @@ const TodoApp = React.createClass({
         }
       ]
     };
-  },
-  handleAddTodo: function(text) {
+  }
+
+  handleAddTodo(text) {
     alert("new todo: " + text);
-  },
-  handleSearch: function(showCompleted, searchText) {
+  }
+
+  handleSearch(showCompleted, searchText) {
     this.setState({
       showCompleted: showCompleted,
       searchText: searchText.toLowerCase()
     });
-  },
-  render: function() {
+  }
+
+  render() {
     const {todos} = this.state;
     return (
       <div>
-        <TodoSearch onSearch={ this.handleSearch } />
-        <TodoList todos={ todos } />
-        <AddTodo onAddTodo={ this.handleAddTodo } />
+        <TodoSearch onSearch={this.handleSearch}/>
+        <TodoList todos={todos}/>
+        <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
-      );
+    );
   }
-});
+}
 
-module.exports = TodoApp;
+export default TodoApp;

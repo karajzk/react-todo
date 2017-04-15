@@ -1,7 +1,8 @@
-const React = require("react");
+import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
-const Todo = React.createClass({
-  render: function() {
+class Todo extends Component {
+  render() {
     const {id, text} = this.props;
     return (
       <div>
@@ -10,6 +11,11 @@ const Todo = React.createClass({
       </div>
       );
   }
-});
+}
 
-module.exports = Todo;
+Todo.propTypes = {
+  id: PropTypes.number,
+  text: PropTypes.string
+};
+
+export default Todo;

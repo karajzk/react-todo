@@ -1,27 +1,29 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-dom/test-utils');
-var expect = require('expect');
-var $ = require('jQuery');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const TestUtils = require("react-dom/test-utils");
+const expect = require("expect");
+const $ = require("jQuery");
 
-var TodoList = require('TodoList');
-var Todo = require('Todo');
+import TodoList from "TodoList";
+import Todo from "Todo";
 
-describe('TodoList',()=>{
-    it('should exist',()=>{
+describe("TodoList", () => {
+    it("should exist", () => {
         expect(TodoList).toExist();
     });
 
-    it('should render one Todo component for each totd item',()=>{
-        var todos = [{
-            id:1,
-            text: 'something'
-        },{
-            id:2,
-            text: 'check mail'
-        }];
-        var todoList=TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
-        var todosComponents=TestUtils.scryRenderedComponentsWithType(todoList,Todo);
+    it("should render one Todo component for each totd item", () => {
+        const todos = [
+            {
+                id: 1,
+                text: "something"
+            }, {
+                id: 2,
+                text: "check mail"
+            }
+        ];
+        const todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
+        const todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, Todo);
 
         expect(todosComponents.length).toBe(2);
     });

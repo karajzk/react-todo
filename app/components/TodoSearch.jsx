@@ -1,31 +1,45 @@
-const React = require("react");
+import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
-const TodoSearch = React.createClass({
-  handleSearch: function() {
+class TodoSearch extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSearch = this
+      .handleSearch
+      .bind(this);
+  }
+
+  handleSearch() {
     const showCompleted = this.refs.showCompleted.checked;
     const searchText = this.refs.searchText.value;
 
-    this.props.onSearch(showCompleted, searchText);
-  },
-  render: function() {
+    this
+      .props
+      .onSearch(showCompleted, searchText);
+  }
+
+  render() {
     return (
       <div>
         <div>
-          <input type="search"
-                 ref="searchText"
-                 placeholder="Search todos"
-                 onChange={ this.handleSearch } />
+          <input
+            type="search"
+            ref="searchText"
+            placeholder="Search todos"
+            onChange={this.handleSearch}/>
         </div>
         <div>
           <label>
-            <input type="checkbox"
-                   ref="showCompleted"
-                   onChange={ this.handleSearch } />
+            <input type="checkbox" ref="showCompleted" onChange={this.handleSearch}/>
           </label>
         </div>
       </div>
-      );
+    );
   }
-});
+}
 
-module.exports = TodoSearch;
+TodoSearch.propTypes = {
+  onSearch: PropTypes.func
+};
+
+export default TodoSearch;

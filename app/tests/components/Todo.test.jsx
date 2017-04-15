@@ -1,13 +1,13 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-dom/test-utils');
-var expect = require('expect');
-var $ = require('jQuery');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const TestUtils = require("react-dom/test-utils");
+const expect = require("expect");
+const $ = require("jQuery");
 
-var Todo = require('Todo');
+import Todo from "Todo";
 
-describe('Todo',()=>{
-    it('should exist',()=>{
+describe("Todo", () => {
+    it("should exist", () => {
         expect(Todo).toExist();
     });
 });

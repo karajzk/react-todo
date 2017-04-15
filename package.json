@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "express": "^4.15.2",
+    "prop-types": "^15.5.8",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-router": "^2.0.0"

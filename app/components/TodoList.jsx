@@ -1,24 +1,27 @@
-const React = require("react");
-const Todo = require("Todo");
+import React, {Component} from 'react';
+import PropTypes from "prop-types";
+import Todo from "Todo";
 
-const TodoList = React.createClass({
-  render: function() {
+class TodoList extends Component {
+  render() {
     const {todos} = this.props;
 
     const renderTodos = () => {
       return todos.map((todo) => {
-        return (
-          <Todo key={ todo.id } {...todo}/>
-          );
+        return (<Todo key={todo.id} {...todo}/>);
       });
     };
 
     return (
       <div>
-        { renderTodos() }
+        {renderTodos()}
       </div>
-      );
+    );
   }
-});
+}
 
-module.exports = TodoList;
+TodoList.propTypes = {
+  todos: PropTypes.array
+};
+
+export default TodoList;

@@ -4,7 +4,7 @@ const TestUtils = require("react-dom/test-utils");
 const expect = require("expect");
 const $ = require("jQuery");
 
-const TodoSearch = require("TodoSearch");
+import TodoSearch from "TodoSearch";
 
 describe("TodoSearch", () => {
   it("should exist", () => {
