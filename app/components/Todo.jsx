@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Todo extends Component {
   render() {
-    const {id, text} = this.props;
+    const {id, text, completed} = this.props;
     return (
-      <div>
-        { id }.
+      <div ref={ (div) => this.divRef = div } onClick={ () => {
+                                                 this.props.onToggle(id);
+                                               } }>
+        <input type="checkbox" checked={ completed } />
         { text }
       </div>
       );
@@ -14,8 +16,10 @@ class Todo extends Component {
 }
 
 Todo.propTypes = {
-  id: PropTypes.number,
-  text: PropTypes.string
+  id: PropTypes.string,
+  text: PropTypes.string,
+  completed: PropTypes.bool,
+  onToggle: PropTypes.func
 };
 
 export default Todo;

@@ -1,10 +1,12 @@
 {
   "plugins": [
-    "react"
+    "react",
+    "jasmine"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jasmine/recommended",
     "babel"
   ],
   "rules": {
@@ -17,7 +19,13 @@
     "react/prop-types": "warn",
     "indent": "off",
     "object-curly-spacing": "off",
-    "react/jsx-indent-props": "off"
+    "react/jsx-indent-props": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-curly-spacing": "off",
+    "react/jsx-sort-prop-types": "off"
+  },
+  "env": {
+    "jasmine": true
   },
   "parserOptions": {
     "ecmaFeatures": {

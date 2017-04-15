@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class AddTodo extends Component {
@@ -21,7 +21,9 @@ class AddTodo extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={ this.handleSubmit }>
+        <form ref={ (form) => {
+                      this.formRef = form;
+                    } } onSubmit={ this.handleSubmit }>
           <input ref="todoText"
                  type="text"
                  placeholder="Enter new todo" />
