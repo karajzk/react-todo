@@ -1,39 +1,39 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-dom/test-utils');
-var expect = require('expect');
-var $ = require('jQuery');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const TestUtils = require("react-dom/test-utils");
+const expect = require("expect");
+const $ = require("jQuery");
 
-var AddTodo = require('AddTodo');
+import AddTodo from "AddTodo";
 
-describe('AddTodo',()=>{
-    it('should exist',()=>{
-        expect(AddTodo).toExist();
-    });
+describe("AddTodo", () => {
+  it("should exist", () => {
+    expect(AddTodo).toExist();
+  });
 
-    it('should call onAddTodo prop with valid data',()=>{
-        var todoText = 'check mail';
-        var spy=expect.createSpy();
-        var addTodo=TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy}/>);
-        var $el = $(ReactDOM.findDOMNode(addTodo));
+  it("should call onAddTodo prop with valid data", () => {
+    const todoText = "check mail";
+    const spy = expect.createSpy();
+    const addTodo = TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy}/>);
+    const $el = $(ReactDOM.findDOMNode(addTodo));
 
-        addTodo.refs.todoText.value=todoText;
-        TestUtils.Simulate.submit($el.find('form')[0]);
+    addTodo.refs.todoText.value = todoText;
+    TestUtils.Simulate.submit($el.find("form")[0]);
 
-        expect(spy).toHaveBeenCalledWith(todoText);
-    });
+    expect(spy).toHaveBeenCalledWith(todoText);
+  });
 
-    it('should not call onAddTodo prop with invalid data',()=>{
-        var todoText = '';
-        var spy=expect.createSpy();
-        var addTodo=TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy}/>);
-        var $el = $(ReactDOM.findDOMNode(addTodo));
+  it("should not call onAddTodo prop with invalid data", () => {
+    const todoText = "";
+    const spy = expect.createSpy();
+    const addTodo = TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy}/>);
+    const $el = $(ReactDOM.findDOMNode(addTodo));
 
-        addTodo.refs.todoText.value=todoText;
-        TestUtils.Simulate.submit($el.find('form')[0]);
+    addTodo.refs.todoText.value = todoText;
+    TestUtils.Simulate.submit($el.find("form")[0]);
 
-        expect(spy).toNotHaveBeenCalled();
-    });
+    expect(spy).toNotHaveBeenCalled();
+  });
 
-    
+
 });

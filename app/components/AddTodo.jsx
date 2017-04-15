@@ -1,26 +1,40 @@
-var React = require('react');
+import React, { Component, PropTypes } from "react";
 
-var AddTodo = React.createClass({
-    handleSubmit: function (e) {
-        e.preventDefault();
-        var todoText = this.refs.todoText.value;
-        if (todoText.length > 0) {
-            this.refs.todoText.value = '';
-            this.props.onAddTodo(todoText);
-        } else {
-            this.refs.todoText.focus();
-        }
-    },
-    render: function () {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input ref="todoText" type="text" placeholder="Enter new todo"/>
-                    <button className="button expanded">Add todo</button>
-                </form>
-            </div>
-        );
+class AddTodo extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const todoText = this.refs.todoText.value;
+    if (todoText.length > 0) {
+      this.refs.todoText.value = "";
+      this.props.onAddTodo(todoText);
+    } else {
+      this.refs.todoText.focus();
     }
-});
+  }
 
-module.exports = AddTodo;
+  render() {
+    return (
+      <div>
+        <form onSubmit={ this.handleSubmit }>
+          <input ref="todoText"
+                 type="text"
+                 placeholder="Enter new todo" />
+          <button className="button expanded">
+            Add todo
+          </button>
+        </form>
+      </div>
+      );
+  }
+}
+
+AddTodo.propTypes = {
+  onAddTodo: PropTypes.func.isRequired
+};
+
+export default AddTodo;
