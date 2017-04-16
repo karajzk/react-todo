@@ -25,4 +25,11 @@ describe("TodoList", () => {
 
         expect(todosComponents.length).toBe(2);
     });
+
+    it("should render empty message if no todos", () => {
+        const todos = [];
+        const todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
+        expect(todoList.pRef).toExist();
+    });
+
 });

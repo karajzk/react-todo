@@ -20,7 +20,7 @@ class AddTodo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container__footer">
         <form ref={ (form) => {
                       this.formRef = form;
                     } } onSubmit={ this.handleSubmit }>
