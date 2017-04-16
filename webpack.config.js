@@ -1,32 +1,37 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   entry: [
-    'script-loader!jquery/dist/jquery.min.js', 'script-loader!foundation-sites/dist/js/foundation.min.js', './app/app.jsx'
+    "script-loader!jquery/dist/jquery.min.js",
+    "script-loader!foundation-sites/dist/js/foundation.min.js",
+    "./app/app.jsx"
   ],
   externals: {
-    jquery: 'jQuery'
+    jquery: "jQuery"
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({'$': 'jquery', 'jQuery': 'jquery'})
+    new webpack.ProvidePlugin({
+      "$": "jquery",
+      "jQuery": "jquery"
+    })
   ],
   output: {
     path: path.join(__dirname, "public"),
-    filename: 'bundle.js',
-    sourceMapFilename: 'bundle.js.map',
-    devtoolModuleFilenameTemplate: function (info) {
+    filename: "bundle.js",
+    sourceMapFilename: "bundle.js.map",
+    devtoolModuleFilenameTemplate: function(info) {
       return "file:///" + info.absoluteResourcePath;
     }
   },
   resolve: {
     modules: [
-      'node_modules', './app/components'
+      "node_modules", "./app/components", "./app/api"
     ],
     alias: {
-      applicationStyles: path.resolve(__dirname, 'app/styles/app.scss')
+      applicationStyles: path.resolve(__dirname, "app/styles/app.scss")
     },
     extensions: [".js", ".jsx"]
   },
@@ -34,9 +39,9 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
+        loader: "babel-loader",
         query: {
-          presets: ['react', 'es2015', 'stage-0']
+          presets: ["react", "es2015", "stage-0"]
         },
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
@@ -44,17 +49,17 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           }, {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true
             }
           }, {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
               sourceMap: true,
-              includePaths: [path.resolve(__dirname, 'node_modules/foundation-sites/scss')]
+              includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
             }
           }
         ]
@@ -68,5 +73,5 @@ module.exports = {
     hot: true,
     inline: true
   },
-  devtool: 'cheap-module-eval-source-map'
+  devtool: "cheap-module-eval-source-map"
 };

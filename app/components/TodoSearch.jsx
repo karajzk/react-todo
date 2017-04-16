@@ -31,7 +31,7 @@ class TodoSearch extends Component {
           <label>
             <input type="checkbox"
                    ref="showCompleted"
-                   onChange={ this.handleSearch } />
+                   onChange={ this.handleSearch } /> Show completed todos
           </label>
         </div>
       </div>
