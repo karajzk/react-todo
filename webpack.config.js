@@ -31,7 +31,8 @@ module.exports = {
       "node_modules", "./app/components", "./app/api"
     ],
     alias: {
-      applicationStyles: path.resolve(__dirname, "app/styles/app.scss")
+      applicationStyles: path.resolve(__dirname, "app/styles/app.scss"),
+      actions: path.resolve(__dirname, "app/actions/actions.jsx")
     },
     extensions: [".js", ".jsx"]
   },
